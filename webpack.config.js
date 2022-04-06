@@ -21,7 +21,7 @@ module.exports = {
             extractComments: false,
             terserOptions: {
                 compress: {
-                    drop_console: true,
+                    drop_console: true
                 }
             }
         })]
@@ -40,60 +40,24 @@ module.exports = {
                 options: {
                     presets: ['@babel/preset-env']
                 }
-            },
-            {
-                test: /\.(s(a|c)ss|styl|stylus|css)$/,
-                exclude: [/node_modules/],
-                use: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader', options: { sourceMap: true, url: false }}
-                ]
-            },
-            {
-                test: /\.scss$/,
-                exclude: [/node_modules/],
-                loader: 'sass-loader',
-                options: { sourceMap: true }
-            },
-            {
-                test: /\.sass$/,
-                exclude: [/node_modules/],
-                loader: 'sass-loader',
-                options: {
-                    sassOptions: {
-                        indentedSyntax: true
-                    },
-                    sourceMap: true
-                }
-            },
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]?[hash]'
-                }
             }
         ]
     },
     resolve: {
         extensions: [
-            '.js',
-            '.jsx'
+            '.js'
         ],
         alias: {
-            '@': path.resolve(__dirname, './src/components'),
+            '@': path.resolve(__dirname, './src')
         }
     },
     plugins: [
-        new ESLintPlugin(),
-        new HtmlWebpackPlugin({
-            template: 'public/index.html'
-        })
+        new ESLintPlugin()
     ],
     devServer: {
         static: ['public'],
         compress: false,
-        port: argv.PORT || 3003,
+        port: argv.PORT || 3002,
         hot: true,
         historyApiFallback: {
             index: 'index.html'

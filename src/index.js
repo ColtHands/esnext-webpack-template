@@ -1,6 +1,4 @@
-import { createRoot } from 'react-dom/client'
-import React from 'react'
-import { App } from '@/App.jsx'
-
-createRoot(document.getElementById('app-root'))
-    .render(<App/>)
+(async() => {
+    const hello = await new Promise(resolve => setTimeout(() => resolve('hello world'), 1000))
+    console.log(hello)
+})()
